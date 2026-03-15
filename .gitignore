@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.next/
+.env
+backend/storage/pitch_decks/*
+!backend/storage/pitch_decks/.gitkeep

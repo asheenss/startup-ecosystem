@@ -1,0 +1,27 @@
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
+
+interface DashboardShellProps {
+  title: string;
+  subtitle: string;
+  children: ReactNode;
+}
+
+export function DashboardShell({ title, subtitle, children }: DashboardShellProps) {
+  return (
+    <div className="space-y-8 animate-fade-in">
+      <header className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <span className="badge-ai px-2 py-1">Platform</span>
+          <span className="text-muted text-xs font-mono uppercase tracking-widest">v1.2.0</span>
+        </div>
+        <h1 className="text-4xl font-extrabold tracking-tight text-white lg:text-5xl">{title}</h1>
+        <p className="text-muted text-lg max-w-2xl">{subtitle}</p>
+      </header>
+
+      <div className="grid gap-10">
+        {children}
+      </div>
+    </div>
+  );
+}
