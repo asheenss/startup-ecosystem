@@ -1,6 +1,6 @@
 import json
 import logging
-from typing import Any, Optional, Union
+from typing import Any
 import redis
 from app.core.config import settings
 
@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class CacheService:
     def __init__(self):
         self.enabled = False
-        self.redis_client: Optional[redis.Redis] = None
+        self.redis_client: Any | None = None
         
         if settings.redis_url:
             try:
@@ -25,7 +25,7 @@ class CacheService:
             except Exception as e:
                 logger.warning(f"⚠️ Redis connection failed: {e}. Caching will be disabled.")
 
-    def get(self, key: str) -> Optional[Any]:
+    def get(self, key: str) -> Any | None:
         if not self.enabled or not self.redis_client:
             return None
         
